@@ -46,7 +46,7 @@ npm run lint
 5. Save drafts to local storage; delete with confirmation (success/failure toasts via react-toastify).
 
 ## Asset notes
-- Place your custom `letterhead-placeholder.svg`, `stamp-placeholder.svg`, and `signature-placeholder.svg` under `public/` to override defaults (rename if you prefer different filenames, but keep the references aligned in code).
+- Place your custom `letterhead-placeholder.png`, `stamp-placeholder.png`, and `signature-placeholder.png` under `public/` to override defaults (rename if you prefer different filenames, but keep the references aligned in code).
 - Ensure transparent PNGs or SVGs for best results on the letterhead.
 
 ## Troubleshooting
