@@ -59,7 +59,7 @@ export default function MyDocument({ title, letterTitle, ourRef, yourRef, conten
     <Document>
       <Page size="A4" style={styles.page}>
         <View>
-          <Image style={styles.letterhead} src={letterheadSrc || asset("/letterhead-placeholder.svg")} />
+          <Image style={styles.letterhead} src={letterheadSrc || asset("/letterhead-placeholder.png")} />
           <View style={styles.refsRow}>
             <View style={styles.refBlock}>
               <View style={styles.refLine}>
@@ -111,7 +111,7 @@ export default function MyDocument({ title, letterTitle, ourRef, yourRef, conten
 
         <View style={styles.footer}>
           <View style={styles.footerLeft}>
-            <Image style={styles.signature} src={signatureSrc || asset("/signature-placeholder.svg")} />
+            <Image style={styles.signature} src={signatureSrc || asset("/signature-placeholder.png")} />
             <View style={styles.signerBlock}>
               <Text style={styles.signer}>(Your Name)</Text>
               <Text style={styles.signerRole}>(Title)</Text>
@@ -119,7 +119,7 @@ export default function MyDocument({ title, letterTitle, ourRef, yourRef, conten
           </View>
 
           <View style={styles.footerCenter}>
-            <Image style={styles.stamp} src={stampSrc || asset("/stamp-placeholder.svg")} />
+            <Image style={styles.stamp} src={stampSrc || asset("/stamp-placeholder.png")} />
           </View>
 
           <View style={styles.footerRight} />

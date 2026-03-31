@@ -6,7 +6,7 @@ export default function LetterFooter() {
       <div className="flex flex-row w-full" style={{ minHeight: "160px" }}>
         <div className="flex flex-1 flex-col items-start justify-start">
           <img
-            src="/signature-placeholder.svg"
+            src="/signature-placeholder.png"
             alt="Signature placeholder"
             className="pointer-events-none"
             style={{ width: "140px", height: "80px", objectFit: "contain", marginBottom: "-18px" }}
@@ -17,7 +17,7 @@ export default function LetterFooter() {
 
         <div className="flex flex-1 items-center justify-center">
           <img
-            src="/stamp-placeholder.svg"
+            src="/stamp-placeholder.png"
             alt="Stamp placeholder"
             className="pointer-events-none"
             style={{ width: "165px", height: "115px", objectFit: "contain", opacity: 0.9 }}

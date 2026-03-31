@@ -82,9 +82,9 @@ export default function MainEditor() {
     try {
       const filename = sanitizeFilename(title);
       const [letterheadSrc, stampSrc, signatureSrc] = await Promise.all([
-        getAssetDataUrl("/letterhead-placeholder.svg"),
-        getAssetDataUrl("/stamp-placeholder.svg"),
-        getAssetDataUrl("/signature-placeholder.svg"),
+        getAssetDataUrl("/letterhead-placeholder.png"),
+        getAssetDataUrl("/stamp-placeholder.png"),
+        getAssetDataUrl("/signature-placeholder.png"),
       ]);
 
       const { html: contentWithInlinedImages, failed: failedImages } = await inlineImagesInHtml(content);
