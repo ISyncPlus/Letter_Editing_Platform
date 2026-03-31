@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .writing-canvas {
+            aspect-ratio: 210 / 297;
+            box-shadow: 0px 4px 20px rgba(43, 52, 55, 0.06);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-newsreader {
+            font-family: 'Newsreader', serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-secondary-fixed-variant": "#5a5b61",
+                "tertiary-dim": "#53506b",
+                "secondary-fixed-dim": "#d4d4db",
+                "primary-container": "#d8e2ff",
+                "on-error-container": "#752121",
+                "on-tertiary-fixed-variant": "#54516d",
+                "background": "#f8f9fa",
+                "primary-fixed-dim": "#c2d4ff",
+                "inverse-on-surface": "#9b9d9e",
+                "on-error": "#fff7f6",
+                "secondary-container": "#e2e2e9",
+                "primary": "#005bc0",
+                "inverse-primary": "#4a8eff",
+                "surface-tint": "#005bc0",
+                "tertiary-fixed-dim": "#cac6e6",
+                "secondary": "#5d5f65",
+                "inverse-surface": "#0c0f10",
+                "primary-fixed": "#d8e2ff",
+                "on-secondary": "#f9f8ff",
+                "surface-bright": "#f8f9fa",
+                "surface-container-highest": "#dbe4e7",
+                "on-surface": "#2b3437",
+                "surface-container-high": "#e3e9ec",
+                "on-primary-container": "#004fa8",
+                "on-primary-fixed-variant": "#0058ba",
+                "surface-variant": "#dbe4e7",
+                "error-dim": "#4e0309",
+                "on-primary": "#f7f7ff",
+                "on-surface-variant": "#586064",
+                "on-primary-fixed": "#003d85",
+                "error": "#9f403d",
+                "secondary-fixed": "#e2e2e9",
+                "outline-variant": "#abb3b7",
+                "outline": "#737c7f",
+                "error-container": "#fe8983",
+                "on-background": "#2b3437",
+                "secondary-dim": "#515359",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed": "#37354f",
+                "tertiary": "#5f5c78",
+                "tertiary-fixed": "#d8d3f4",
+                "on-secondary-fixed": "#3e3f45",
+                "tertiary-container": "#d8d3f4",
+                "surface-dim": "#d1dce0",
+                "surface-container": "#eaeff1",
+                "on-tertiary-container": "#4a4863",
+                "surface": "#f8f9fa",
+                "primary-dim": "#004fa9",
+                "on-secondary-container": "#505157",
+                "on-tertiary": "#fcf7ff",
+                "surface-container-low": "#f1f4f6"
+              },
+              fontFamily: {
+                "headline": ["Newsreader"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-slate-50 dark:bg-slate-900">
+<div class="flex items-center gap-8">
+<span class="font-['Newsreader'] font-bold text-xl text-slate-800 dark:text-slate-100">The Archivist</span>
+<div class="hidden md:flex items-center gap-6">
+<span class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 font-bold cursor-pointer h-16 flex items-center">Format</span>
+<span class="text-slate-500 dark:text-slate-400 hover:text-slate-800 transition-colors cursor-pointer h-16 flex items-center">Insert</span>
+<span class="text-slate-500 dark:text-slate-400 hover:text-slate-800 transition-colors cursor-pointer h-16 flex items-center">Layout</span>
+<span class="text-slate-500 dark:text-slate-400 hover:text-slate-800 transition-colors cursor-pointer h-16 flex items-center">Tools</span>
+</div>
+</div>
+<!-- Document Formatting Controls (Task Specific) -->
+<div class="flex items-center gap-1 bg-surface-container rounded-lg p-1 mx-4">
+<button class="p-2 hover:bg-slate-200/50 rounded-md transition-colors"><span class="material-symbols-outlined text-on-surface-variant">format_bold</span></button>
+<button class="p-2 hover:bg-slate-200/50 rounded-md transition-colors"><span class="material-symbols-outlined text-on-surface-variant">format_italic</span></button>
+<button class="p-2 hover:bg-slate-200/50 rounded-md transition-colors"><span class="material-symbols-outlined text-on-surface-variant">format_underlined</span></button>
+<div class="w-px h-4 bg-outline-variant/30 mx-1"></div>
+<button class="p-2 hover:bg-slate-200/50 rounded-md transition-colors"><span class="material-symbols-outlined text-on-surface-variant">format_align_left</span></button>
+<button class="p-2 hover:bg-slate-200/50 rounded-md transition-colors"><span class="material-symbols-outlined text-on-surface-variant">format_align_center</span></button>
+<button class="p-2 hover:bg-slate-200/50 rounded-md transition-colors"><span class="material-symbols-outlined text-on-surface-variant">format_align_right</span></button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-200/50 rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface-variant">history</span></button>
+<button class="p-2 hover:bg-slate-200/50 rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface-variant">share</span></button>
+</div>
+<button class="px-5 py-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary rounded-lg font-medium text-sm shadow-sm active:scale-95 transition-all">
+                Download as PDF
+            </button>
+</div>
+</nav>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] z-40 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 w-64 transition-transform duration-300">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="minimalist avatar of a professional writer in neutral tones with a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX5oQ2adzvvcetE36S-61Bv0W9E7j2IUqCVg63rMskYsAm_cyBUaHj4DLbaRcXsuEQHe-8hGlvGqecf44xHhwnwFyFeB4EXmEfl8gDERPeUi1BWpq76djZKllb44fEbiHLfhRMFFDy0mqwO_rSSYiESEN2uXBNGx0gVYKD1pGZb08krMxpyTXCEWgyC_edAHJT8cbrF_DeylsGujxKLm_RAMuQGaGzjyirB1C6BiIyc2jN7hiUx9ZXYP7bBMICEa1dLUsfJA2Dwks"/>
+</div>
+<div>
+<h3 class="font-['Newsreader'] font-bold text-lg text-slate-900 dark:text-slate-50 leading-tight">Library</h3>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Your Manuscripts</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 mb-8 bg-white dark:bg-white/5 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold text-primary hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Document
+            </button>
+<nav class="space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer group">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">folder_open</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Saved Drafts</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer group">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">description</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Templates</span>
+</div>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200/50 dark:border-slate-800/50">
+<nav class="space-y-1">
+<div class="flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Settings</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Help</span>
+</div>
+</nav>
+</div>
+</aside>
+<!-- Main Workspace Area -->
+<main class="ml-64 pt-16 min-h-screen bg-surface-container-low flex flex-col items-center">
+<!-- Document Header Label -->
+<div class="w-full max-w-[850px] mt-12 mb-6 px-4 flex justify-between items-end">
+<div>
+<span class="text-[0.6875rem] font-bold tracking-[0.1em] text-on-surface-variant uppercase block mb-1">CURRENT DOCUMENT</span>
+<h1 class="font-newsreader text-3xl font-bold text-on-surface">New Letter</h1>
+</div>
+<div class="text-right">
+<span class="text-[0.6875rem] font-bold tracking-[0.1em] text-on-surface-variant uppercase block mb-1">LAST EDITED</span>
+<p class="text-sm text-on-surface font-medium">Just now</p>
+</div>
+</div>
+<!-- A4 Document Canvas -->
+<div class="writing-canvas w-full max-w-[210mm] bg-surface-container-lowest rounded-lg mb-24 flex flex-col p-[25mm] relative overflow-hidden">
+<!-- Letterhead -->
+<header class="mb-12 border-b-4 border-primary/10 pb-8 flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h2 class="font-newsreader font-bold text-2xl text-primary tracking-tight">Modern Letter Co.</h2>
+<p class="text-xs text-on-surface-variant font-medium">ESTABLISHED 2024</p>
+</div>
+<div class="text-right text-sm text-on-surface-variant leading-relaxed">
+<p>123 Business St</p>
+<p>City, State, ZIP</p>
+<p>contact@modernletter.co</p>
+</div>
+</header>
+<!-- Editable Content Area -->
+<div class="flex-grow">
+<div class="mb-12">
+<p class="text-on-surface font-medium">October 24, 2023</p>
+</div>
+<div class="prose prose-slate max-w-none">
+<div class="outline-none min-h-[400px] text-on-surface leading-relaxed font-body text-lg focus:ring-0" contenteditable="true">
+<p class="text-on-surface-variant opacity-50 italic">Start typing your letter...</p>
+</div>
+</div>
+</div>
+<!-- Signature Footer -->
+<footer class="mt-12 pt-8">
+<div class="w-48 h-px bg-outline-variant/30 mb-6"></div>
+<div class="space-y-1">
+<p class="font-newsreader text-lg italic text-on-surface">Best regards,</p>
+<p class="font-bold text-on-surface">[Your Name]</p>
+</div>
+</footer>
+<!-- Margin Indicators (Decorative for "Editor" Feel) -->
+<div class="absolute top-0 left-[25mm] bottom-0 w-px bg-slate-100/50 pointer-events-none"></div>
+<div class="absolute top-0 right-[25mm] bottom-0 w-px bg-slate-100/50 pointer-events-none"></div>
+</div>
+<!-- Floating Contextual Toolbar (Bottom Center) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 px-6 py-3 bg-white/70 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl z-50">
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">text_fields</span>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Style</span>
+</button>
+<div class="w-px h-8 bg-outline-variant/20 mx-2"></div>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">spellcheck</span>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Review</span>
+</button>
+<div class="w-px h-8 bg-outline-variant/20 mx-2"></div>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">print</span>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Print</span>
+</button>
+</div>
+</main>
+</body></html>
