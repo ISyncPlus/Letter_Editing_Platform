@@ -5,7 +5,7 @@ Rich letterhead editor with TinyMCE content, live A4 preview, PDF export via @re
 ## Features
 - Compose letters with rich text (TinyMCE) and embedded images (inlined for PDF export).
 - A4 preview and matching downloadable PDF using @react-pdf/renderer and react-pdf-html.
-- Configurable letterhead, stamp, and signature assets (neutral placeholders served from `public`).
+- Configurable letterhead, stamp, and signature assets that MUST be .png files per standard (neutral placeholders served from `public`).
 - Drafts saved to local storage with delete confirmation and react-toastify notifications.
 - Tailwind-powered layout; Lucide/react-icons for UI controls.
 
@@ -52,3 +52,5 @@ npm run lint
 ## Troubleshooting
 - If the dev server fails to start, clear `.vite` cache: remove `node_modules/.vite` and rerun `npm run dev`.
 - PDF layout issues (overflow or assets missing): confirm images exist under `public/` and reduce overly large content or images inside the editor.
+
+  Made with 💙 by Ebube Ezedimbu
