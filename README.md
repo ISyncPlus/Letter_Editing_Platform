@@ -1,16 +1,54 @@
-# React + Vite
+# Letter Editing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Rich letterhead editor with TinyMCE content, live A4 preview, PDF export via @react-pdf/renderer, inline images, and draft management with toasts.
 
-Currently, two official plugins are available:
+## Features
+- Compose letters with rich text (TinyMCE) and embedded images (inlined for PDF export).
+- A4 preview and matching downloadable PDF using @react-pdf/renderer and react-pdf-html.
+- Configurable letterhead, stamp, and signature assets (defaults served from `public`).
+- Drafts saved to local storage with delete confirmation and react-toastify notifications.
+- Tailwind-powered layout; Lucide/react-icons for UI controls.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Prerequisites
+- Node.js 18+ and npm.
 
-## React Compiler
+## Installation
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Running the app (dev)
+```bash
+npm run dev
+```
+Then open the printed URL (default `http://localhost:5173`).
 
-## Expanding the ESLint configuration
+## Build for production
+```bash
+npm run build
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Preview production build
+```bash
+npm run preview
+```
+
+## Lint
+```bash
+npm run lint
+```
+
+## Usage
+1. Open the editor and set your letterhead, stamp, and signature images (defaults: `/letterhead.png`, `/stamp.png`, `/signature.png` in `public`).
+2. Write or paste letter content in the editor (TinyMCE supports images, formatting, lists, and headings).
+3. Watch the A4 preview update live.
+4. Download as PDF; images are inlined and the PDF mirrors the preview layout.
+5. Save drafts to local storage; delete with confirmation (success/failure toasts via react-toastify).
+
+## Asset notes
+- Place your custom `letterhead.png`, `stamp.png`, and `signature.png` under `public/` to override defaults.
+- Ensure transparent PNGs for best results on the letterhead.
+
+## Troubleshooting
+- If the dev server fails to start, clear `.vite` cache: remove `node_modules/.vite` and rerun `npm run dev`.
+- PDF layout issues (overflow or assets missing): confirm images exist under `public/` and reduce overly large content or images inside the editor.
