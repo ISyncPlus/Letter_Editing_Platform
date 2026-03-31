@@ -52,3 +52,5 @@ npm run lint
 ## Troubleshooting
 - If the dev server fails to start, clear `.vite` cache: remove `node_modules/.vite` and rerun `npm run dev`.
 - PDF layout issues (overflow or assets missing): confirm images exist under `public/` and reduce overly large content or images inside the editor.
+
+  Made with 💙 by Ebube Ezedimbu
