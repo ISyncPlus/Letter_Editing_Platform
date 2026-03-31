@@ -7,8 +7,8 @@ export default function LetterHeader({ ourRef = "", yourRef = "" }) {
       style={{ fontFamily: "Times New Roman, serif" }}
     >
       <img
-        src="/letterhead.png"
-        alt="Letterhead"
+        src="/letterhead-placeholder.svg"
+        alt="Letterhead placeholder"
         className="w-full object-contain"
         style={{ height: "auto" }}
       />

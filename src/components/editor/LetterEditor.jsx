@@ -1,5 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+
+const MAX_WORDS_WITH_IMAGE = 125;
+
+const getWordStats = (html) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html || "", "text/html");
+  const text = (doc.body?.textContent || "").trim();
+  const words = text ? text.split(/\s+/).filter(Boolean) : [];
+  const hasImage = !!doc.querySelector("img");
+  return { wordCount: words.length, hasImage };
+};
 
 export default function LetterEditor({
   title,
@@ -14,8 +25,28 @@ export default function LetterEditor({
   setContent,
   onSave,
   onPreview,
+  onLimitWarning,
 }) {
   const [isSaving, setIsSaving] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef(null);
+  const editorRef = useRef(null);
+  const { wordCount, hasImage } = getWordStats(content);
+
+  const handleEditorChange = (newValue, editor) => {
+    const stats = getWordStats(newValue);
+    if (stats.hasImage && stats.wordCount > MAX_WORDS_WITH_IMAGE) {
+      if (onLimitWarning) {
+        onLimitWarning("Max 125 words when an image is attached.");
+      }
+      if (editor?.undoManager) {
+        editor.undoManager.undo();
+      }
+      return;
+    }
+    setContent(newValue);
+  };
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -24,6 +55,36 @@ export default function LetterEditor({
     } finally {
       setIsSaving(false);
     }
+  };
+
+  const handleInsertImage = (file) => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const src = reader.result;
+      const editor = editorRef.current;
+      if (!editor) return;
+      editor.insertContent(`<img src="${src}" alt="" />`);
+      setShowImageModal(false);
+    };
+    reader.onerror = () => {
+      if (onLimitWarning) onLimitWarning("Image upload failed. Please try again.");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleFileSelect = (e) => {
+    const file = e.target.files && e.target.files[0];
+    handleInsertImage(file);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const file = e.dataTransfer?.files?.[0];
+    handleInsertImage(file);
   };
 
   return (
@@ -81,7 +142,7 @@ export default function LetterEditor({
         <Editor
           apiKey="78ljds4d5b1enpzgxjpyugdt1i3bbnqvg3rzegrr7tggli84"
           value={content}
-          onEditorChange={(newValue) => setContent(newValue)}
+          onEditorChange={handleEditorChange}
           init={{
             height: 500,
             menubar: false,
@@ -95,7 +156,7 @@ export default function LetterEditor({
               "paste"
             ],
             toolbar:
-              "undo redo | bold italic underline strikethrough | alignleft aligncenter alignright link image | bullist numlist | outdent indent |  | table",
+              "undo redo | bold italic underline strikethrough | alignleft aligncenter alignright link simpleImage | bullist numlist | outdent indent |  | table",
             /* Enable image upload and drag-drop */
             file_picker_types: "image",
             images_upload_handler: (blobInfo) => new Promise((resolve, reject) => {
@@ -104,6 +165,14 @@ export default function LetterEditor({
               reader.onerror = () => reject(new Error("Image upload failed"));
               reader.readAsDataURL(blobInfo.blob());
             }),
+            setup: (editor) => {
+              editorRef.current = editor;
+              editor.ui.registry.addButton("simpleImage", {
+                icon: "image",
+                tooltip: "Insert image",
+                onAction: () => setShowImageModal(true),
+              });
+            },
             /* Content Style - Times New Roman 12pt */
             content_style: `
               body {
@@ -127,6 +196,55 @@ export default function LetterEditor({
             automatic_uploads: true,
           }}
         />
+
+          {showImageModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" onClick={() => setShowImageModal(false)}>
+              <div
+                className="bg-white rounded-lg shadow-xl w-full max-w-md p-5"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <h3 className="text-base font-semibold text-[#2b3437] mb-3">Insert image</h3>
+                <div
+                  className={`border-2 border-dashed rounded-md p-6 text-center transition-colors ${isDragging ? "border-[#005bc0] bg-[#005bc0]/5" : "border-[#cfd3da] bg-[#f8f9fa]"}`}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    setIsDragging(true);
+                  }}
+                  onDragLeave={() => setIsDragging(false)}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <p className="text-sm text-[#4a4f55] mb-3">Drag and drop an image here</p>
+                  <button
+                    type="button"
+                    className="px-4 py-2 bg-[#005bc0] text-white rounded-md text-sm font-medium hover:opacity-90"
+                  >
+                    Browse image
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleFileSelect}
+                  />
+                </div>
+                <div className="flex justify-end gap-2 mt-4">
+                  <button
+                    type="button"
+                    className="px-3 py-2 text-sm text-[#4a4f55] hover:text-[#2b3437]"
+                    onClick={() => setShowImageModal(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        <div className="px-4 pb-3 pt-2 text-[11px] text-[#4a4f55] flex justify-between">
+          <span>Words: {wordCount}</span>
+          {hasImage ? <span>Limit: {MAX_WORDS_WITH_IMAGE} words when images are attached</span> : <span>&nbsp;</span>}
+        </div>
       </div>
 
       {/* Action Buttons - Save & Preview */}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="180" viewBox="0 0 480 180" fill="none">
+  <rect x="6" y="18" width="468" height="144" rx="22" fill="#f9fbff" stroke="#d8e2f2" stroke-width="3" stroke-dasharray="10 10"/>
+  <path d="M66 104C96 92 126 84 152 94C184 106 214 126 246 116C274 108 298 78 322 74C350 70 378 82 406 98" stroke="#26428b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="62" y="68" fill="#26428b" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600">Signature Placeholder</text>
+</svg>

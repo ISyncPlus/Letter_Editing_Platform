@@ -82,9 +82,9 @@ export default function MainEditor() {
     try {
       const filename = sanitizeFilename(title);
       const [letterheadSrc, stampSrc, signatureSrc] = await Promise.all([
-        getAssetDataUrl("/letterhead.png"),
-        getAssetDataUrl("/stamp.png"),
-        getAssetDataUrl("/signature.png"),
+        getAssetDataUrl("/letterhead-placeholder.svg"),
+        getAssetDataUrl("/stamp-placeholder.svg"),
+        getAssetDataUrl("/signature-placeholder.svg"),
       ]);
 
       const { html: contentWithInlinedImages, failed: failedImages } = await inlineImagesInHtml(content);
@@ -210,6 +210,7 @@ export default function MainEditor() {
         setContent={setContent}
         onSave={handleSaveDraft}
         onPreview={handlePreview}
+        onLimitWarning={(msg) => showToast(msg, "warning")}
       />
 
       <PreviewModal

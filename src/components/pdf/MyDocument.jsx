@@ -59,7 +59,7 @@ export default function MyDocument({ title, letterTitle, ourRef, yourRef, conten
     <Document>
       <Page size="A4" style={styles.page}>
         <View>
-          <Image style={styles.letterhead} src={letterheadSrc || asset("/letterhead.png")} />
+          <Image style={styles.letterhead} src={letterheadSrc || asset("/letterhead-placeholder.svg")} />
           <View style={styles.refsRow}>
             <View style={styles.refBlock}>
               <View style={styles.refLine}>
@@ -75,11 +75,7 @@ export default function MyDocument({ title, letterTitle, ourRef, yourRef, conten
           </View>
         </View>
 
-        <Text style={styles.greeting}>
-          Msgri. & Frs.,{"\n"}
-          Consecrated Men and Women,{"\n"}
-          Brothers and Sisters in Christ,
-        </Text>
+        <Text style={styles.greeting}>Dear Sir/Ma,</Text>
 
         {displayTitle ? <Text style={styles.title}>{displayTitle}</Text> : null}
 
@@ -115,15 +111,15 @@ export default function MyDocument({ title, letterTitle, ourRef, yourRef, conten
 
         <View style={styles.footer}>
           <View style={styles.footerLeft}>
-            <Image style={styles.signature} src={signatureSrc || asset("/signature.png")} />
+            <Image style={styles.signature} src={signatureSrc || asset("/signature-placeholder.svg")} />
             <View style={styles.signerBlock}>
-              <Text style={styles.signer}>Rev. Fr. Charles Ndubuisi</Text>
-              <Text style={styles.signerRole}>Diocesan Chancellor</Text>
+              <Text style={styles.signer}>(Your Name)</Text>
+              <Text style={styles.signerRole}>(Title)</Text>
             </View>
           </View>
 
           <View style={styles.footerCenter}>
-            <Image style={styles.stamp} src={stampSrc || asset("/stamp.png")} />
+            <Image style={styles.stamp} src={stampSrc || asset("/stamp-placeholder.svg")} />
           </View>
 
           <View style={styles.footerRight} />

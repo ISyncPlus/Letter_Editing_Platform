@@ -24,9 +24,7 @@ const A4Page = forwardRef(function A4Page(
       <LetterHeader ourRef={ourRef} yourRef={yourRef} />
 
       <p className="mb-4 text-[12pt] leading-normal" style={{ fontFamily: "Times New Roman, serif" }}>
-        Msgri. &amp; Frs.,<br />
-        Consecrated Men and Women,<br />
-        Brothers and Sisters in Christ,
+        Dear Sir/Ma,
       </p>
 
       {displayTitle && (

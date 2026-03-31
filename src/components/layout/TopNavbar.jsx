@@ -19,11 +19,11 @@ export default function TopNavbar({ isSidebarOpen, setIsSidebarOpen }) {
         >
           <LucideMenu size={24} className="text-[#005bc0]" />
         </button>
-        <img
-          src="/awka_logo.png"
-          alt="Awka Logo"
-          className="h-17 w-auto object-contain"
-        />
+
+        {/* Neutral placeholder logo */}
+        <div className="h-10 w-32 rounded-lg border border-[#d5d9e2] bg-white text-[#2b3437] flex items-center justify-center text-sm font-semibold tracking-wide shadow-sm">
+          Your Logo
+        </div>
       </div>
 
       {/* Right-side actions */}
