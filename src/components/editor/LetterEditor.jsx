@@ -33,6 +33,7 @@ export default function LetterEditor({
   const fileInputRef = useRef(null);
   const editorRef = useRef(null);
   const { wordCount, hasImage } = getWordStats(content);
+  const mceApiKey = import.meta.env.VITE_MCE_API || "";
 
   const handleEditorChange = (newValue, editor) => {
     const stats = getWordStats(newValue);
@@ -140,7 +141,7 @@ export default function LetterEditor({
 
         {/* TinyMCE Editor with Full Rich Text Features */}
         <Editor
-          apiKey="78ljds4d5b1enpzgxjpyugdt1i3bbnqvg3rzegrr7tggli84"
+          apiKey={mceApiKey}
           value={content}
           onEditorChange={handleEditorChange}
           init={{
